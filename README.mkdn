@@ -1,0 +1,40 @@
+Getting Started
+---------------
+
+To initialize your local repository using the Midnight Programmer Ice Cream Sandwich tree, use a command like this:
+
+    mkdir android
+    mkdir android/system
+    cd android/system
+
+    repo init -u https://github.com/MidnightProgrammer/Midnight -b ics
+
+Then to sync up:
+
+    repo sync
+
+After Sync now to build
+
+    ./build/envsetup.sh
+    lunch 
+    (pick build for device required)
+    make otapackage
+
+NOTE:
+Until kernel.org is back up and running, you'll need to modify the repo command script to use a different url.
+
+The location of the script may differ from machine to machine but the common locations are as follows:
+
+    /usr/bin/repo
+    /usr/local/bin/repo
+    ~/bin/repo
+
+Edit the file and change the line that reads:
+    REPO_URL='git://android.git.kernel.org/tools/repo.git'
+
+To:
+
+    REPO_URL='git://github.com/android/tools_repo.git'
+
+You should now be able to run the 'repo init' command without issue.
+
